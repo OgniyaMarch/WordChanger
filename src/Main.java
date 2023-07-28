@@ -2,10 +2,10 @@ import java.io.*;
 import java.util.Scanner;
 
 /*
- * Головна мета створення програми 
- * яка надає змогу змінювати слова, які випадково 
- * було написано іншою мовою.
- * Наприклад ghbdsn -> привіт 
+ * The goal is to create an application
+ * that allows you to change words
+ * that were accidentally written in another language.
+ * For instance: ghbdsn -> привіт or руддщ -> hello
  */
 
 public class Main {
@@ -18,8 +18,6 @@ public class Main {
 		System.out.println("Enter a string: ");
 		StringBuilder userString = new StringBuilder(scanner.nextLine());
 
-
-
 		//keeping and checking user answer
 		String languageToBeTranslatedInto;
 		boolean userRightAnswer = false;
@@ -27,26 +25,26 @@ public class Main {
 			System.out.println("Enter the language to be translated into (uk/en): ");
 			languageToBeTranslatedInto = scanner.nextLine();
 
-			//changing string: delete space and lowerCase
-			languageToBeTranslatedInto = languageToBeTranslatedInto.trim();
-			languageToBeTranslatedInto = languageToBeTranslatedInto.toLowerCase();
-			userRightAnswer = Validation.ValidationLanguageTag(languageToBeTranslatedInto);
+			//changing string: lowerCase and delete space
+			languageToBeTranslatedInto = StringModifier.stringModifier(languageToBeTranslatedInto);
 
+			userRightAnswer = Validation.ValidationLanguageTag(languageToBeTranslatedInto);
 		}while(!userRightAnswer);
-//!userAnswerExist ||
-		VocabularyEnglishUkrainian voc1 = new VocabularyEnglishUkrainian();
-		voc1.changingEnglishToUkrainian(userString);
+
+		VocabularyEnglishUkrainian vocabularyEnUk = new VocabularyEnglishUkrainian();
+		switch(languageToBeTranslatedInto){
+			case "en":
+				vocabularyEnUk.changingUkrainianToEnglish(userString);
+				break;
+			case "uk":
+				vocabularyEnUk.changingEnglishToUkrainian(userString);
+				break;
+			default:
+				System.out.println("Error");
+		}
 
 		scanner.close();
 	}
-
 }
 
 
-/*
- * Create function for personality vocabulary every user
- *   // Method to add elements to the HashMap
-    public void addToHashMap(String key, int value) {
-        myHashMap.put(key, value);
-    }
- * */
