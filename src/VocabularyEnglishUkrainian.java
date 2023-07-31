@@ -56,7 +56,7 @@ public class VocabularyEnglishUkrainian{
 
 	}
 	
-	public void changingEnglishToUkrainian(StringBuilder userWrongString) {
+	public StringBuilder changingEnglishToUkrainian(StringBuilder userWrongString) {
 		StringBuilder userRightUkString = new StringBuilder();
 
 			for (int i = 0; i < userWrongString.length(); i++) {
@@ -70,19 +70,19 @@ public class VocabularyEnglishUkrainian{
 					userRightUkString.append(key);
 				}
 			}
-		System.out.println(userRightUkString);
+		return userRightUkString;
 	}
 	
-	public void changingUkrainianToEnglish (StringBuilder userWrongString){
+	public StringBuilder changingUkrainianToEnglish (StringBuilder userWrongString){
 		StringBuilder userRightEnString = new StringBuilder();
 
 		for (int i = 0; i < userWrongString.length(); i++) {
-			char desiredValue = userWrongString.charAt(i);
+			char notTranslatedChar = userWrongString.charAt(i);
 			boolean keyFound = false;
 
 			// Iterate through the entries to find the corresponding key
 			for (Map.Entry<Character, Character> entry : vocabularyEngUa.entrySet()){
-				if(entry.getValue() == desiredValue){
+				if(entry.getValue() == notTranslatedChar){
 					keyFound = true;
 					userRightEnString.append(entry.getKey());
 					break;
@@ -91,11 +91,11 @@ public class VocabularyEnglishUkrainian{
 
 			//adding characters that are not included in the list (example: space)
 			if(!keyFound){
-					userRightEnString.append(desiredValue);
-				}
+					userRightEnString.append(notTranslatedChar);
+			}
 
 		}
-		System.out.println(userRightEnString);
+		return userRightEnString;
 	}
 	
 }

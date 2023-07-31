@@ -1,6 +1,5 @@
 public class StringModifier {
-    public static String stringModifier(String userString){
-        userString = userString.trim().toLowerCase();
-        return userString;
+    public static String stringModifier(String userInput){
+        return userInput.trim().toLowerCase();
     }
 }

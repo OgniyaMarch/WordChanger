@@ -28,16 +28,16 @@ public class Main {
 			//changing string: lowerCase and delete space
 			languageToBeTranslatedInto = StringModifier.stringModifier(languageToBeTranslatedInto);
 
-			userRightAnswer = Validation.ValidationLanguageTag(languageToBeTranslatedInto);
+			userRightAnswer = Validation.validateLanguageTag(languageToBeTranslatedInto);
 		}while(!userRightAnswer);
 
 		VocabularyEnglishUkrainian vocabularyEnUk = new VocabularyEnglishUkrainian();
 		switch(languageToBeTranslatedInto){
 			case "en":
-				vocabularyEnUk.changingUkrainianToEnglish(userString);
+				System.out.println(vocabularyEnUk.changingUkrainianToEnglish(userString));
 				break;
 			case "uk":
-				vocabularyEnUk.changingEnglishToUkrainian(userString);
+				System.out.println(vocabularyEnUk.changingEnglishToUkrainian(userString));
 				break;
 			default:
 				System.out.println("Error");
